@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的網站首頁</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="video-carousel">
+      <video class="active" src="videos/video1.mp4" autoplay loop muted></video>
+      <video src="videos/video2.mp4" autoplay loop muted></video>
+      <video src="videos/video3.mp4" autoplay loop muted></video>
+    </div>
+  </header>
+
+  <main>
+    <section class="card-grid">
+      <div class="card">
+        <a href="page1.html">
+          <img src="images/card1.jpg" alt="頁面 1">
+          <h3>頁面 1</h3>
+          <p>頁面 1 描述文字。</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="page2.html">
+          <img src="images/card2.jpg" alt="頁面 2">
+          <h3>頁面 2</h3>
+          <p>頁面 2 描述文字。</p>
+        </a>
+      </div>
+      </section>
+
+    <div class="sidebar">
+      <button class="close-sidebar">&times; 關閉</button>
+      <h2>子分頁索引</h2>
+      <ul>
+        <li><a href="subpage1.html">子頁面 1</a></li>
+        <li><a href="subpage2.html">子頁面 2</a></li>
+        </ul>
+    </div>
+
+    <button class="open-sidebar">索引</button>
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
