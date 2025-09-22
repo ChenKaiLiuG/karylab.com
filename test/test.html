@@ -77,10 +77,25 @@
   display: block;
 }
 
-/* 內容文字 */
-.text {
-  font-size: 15px;
-  white-space: pre-wrap;
+/* 內容文字的通用設定 */
+.md pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+}
+.md code {
+  background: rgba(0,0,0,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+.md img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 6px 0;
 }
 
 /* 群組化（連續訊息）處理：合併間距 & 隱藏重複 avatar */
@@ -124,15 +139,15 @@
   <div class="chat">
 
     <div class="msg user">
-      <div class="bubble">
-        <div class="text">我要怎麼透過Ubuntu cli查詢硬碟的使用量</div>
+      <div class="bubble markdown">
+        <div class="md">我要怎麼透過Ubuntu cli查詢硬碟的使用量</div>
       </div>
     </div>
     
     <div class="msg ai">
-      <div class="bubble">
+      <div class="bubble markdown">
         <div class="meta">Gemini 2.5 flash</div>
-        <div class="text">若你想透過 Ubuntu 的 CLI（Command-Line Interface）查詢硬碟使用量，你可以使用以下幾個指令。這些指令各有不同的用途，可以根據你的需求選擇最適合的：
+        <div class="md">若你想**透過 Ubuntu 的 CLI（Command-Line Interface）查詢硬碟使用量**，你可以使用以下幾個指令。這些指令各有不同的用途，可以根據你的需求選擇最適合的：
 
 `df` 指令 (disk free)
 `df` 指令是最常用來查詢硬碟使用量的工具，它會顯示所有檔案系統的容量、已用空間、可用空間和掛載點。
@@ -187,32 +202,33 @@ du -h --max-depth=1
     </div>
 
     <div class="msg user">
-      <div class="bubble">
+      <div class="bubble markdown">
         <div class="meta">You · <time>2025-09-21 15:31</time></div>
-        <div class="text">好的，謝謝你！</div>
+        <div class="md">好的，謝謝你！</div>
       </div>
     </div>
 
     <!-- 群組化範例：連續訊息會合併頭像 & 緩和間距 -->
     <div class="msg ai grouped">
-      <div class="bubble">
-        <div class="text">另一句 AI 訊息（同一群組）</div>
+      <div class="bubble markdown">
+        <div class="md">另一句 AI 訊息（同一群組）</div>
       </div>
     </div>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
 <script>
-  // 放在需要渲染的 HTML 元素之後
+window.addEventListener('load', function() {
   const md = window.markdownit({
     html: true,
     linkify: true,
     typographer: true
   });
-  
+
   document.querySelectorAll('.bubble.markdown .md').forEach(el => {
-    const raw = el.textContent;
-    const trimmed = raw.trim();
-    el.innerHTML = md.render(trimmed);
+    el.innerHTML = md.render(el.textContent.trim());
   });
+});
 </script>
+
